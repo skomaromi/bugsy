@@ -1,11 +1,14 @@
 package com.github.skomaromi.bugsy.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.skomaromi.bugsy.R;
 import com.github.skomaromi.bugsy.model.PostSearchResult;
@@ -49,7 +52,7 @@ class PostSearchResultAdapter extends RecyclerView.Adapter<PostSearchResultAdapt
         return mPosts.size();
     }
 
-    class PostSearchResultViewHolder extends RecyclerView.ViewHolder {
+    class PostSearchResultViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.tv_post_title) TextView tv_post_title;
         @BindView(R.id.tv_post_description) TextView tv_post_description;
         @BindView(R.id.tv_post_date) TextView tv_post_date;
@@ -57,6 +60,15 @@ class PostSearchResultAdapter extends RecyclerView.Adapter<PostSearchResultAdapt
         public PostSearchResultViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getLayoutPosition();
+            String url = mPosts.get(position).getLink();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            v.getContext().startActivity(browserIntent);
         }
     }
 }
