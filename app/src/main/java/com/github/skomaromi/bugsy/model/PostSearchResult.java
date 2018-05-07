@@ -13,12 +13,7 @@ public class PostSearchResult {
     @Element(name = "pubDate") private String mDate;
     @Element(name = "category") private String mCategory;
 
-    public PostSearchResult(String mTitle, String mDescription, String mDate, String mCategory) {
-        this.mTitle = mTitle;
-        this.mDescription = mDescription;
-        this.mDate = mDate;
-        this.mCategory = mCategory;
-    }
+    public PostSearchResult() {}
 
     public String getTitle() {
         return mTitle;

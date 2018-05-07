@@ -1,5 +1,8 @@
 package com.github.skomaromi.bugsy.networking;
 
+import org.simpleframework.xml.convert.AnnotationStrategy;
+import org.simpleframework.xml.core.Persister;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
@@ -33,6 +36,6 @@ public class RetrofitUtility {
     }
 
     private static Converter.Factory createConverterFactory() {
-        return SimpleXmlConverterFactory.create();
+        return SimpleXmlConverterFactory.createNonStrict(new Persister(new AnnotationStrategy()));
     }
 }

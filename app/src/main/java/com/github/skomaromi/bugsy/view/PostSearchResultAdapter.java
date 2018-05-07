@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.github.skomaromi.bugsy.R;
 import com.github.skomaromi.bugsy.model.PostSearchResult;
-import com.github.skomaromi.bugsy.model.PostSearchResults;
 
 import java.util.ArrayList;
 import java.util.List;

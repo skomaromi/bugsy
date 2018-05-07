@@ -1,11 +1,9 @@
 package com.github.skomaromi.bugsy.view;
 
-import com.github.skomaromi.bugsy.model.PostSearchResult;
-import com.github.skomaromi.bugsy.model.PostSearchResults;
+import com.github.skomaromi.bugsy.model.RssResponse;
 import com.github.skomaromi.bugsy.networking.RetrofitUtility;
 
-import java.util.List;
-
+import okhttp3.HttpUrl;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,42 +17,19 @@ public class PostsPresenter implements PostsContract.PostsPresenter {
 
     @Override
     public void fetchPosts() {
-        //com.github.skomaromi.bugsy.networking.PostsApi c = RetrofitUtility.getPostsApi();
-        //Call<PostSearchResults> l = c.findPosts();
-
-        //mPostsView.displayPosts(c.findPosts().getPosts());
-
         RetrofitUtility.getPostsApi()
                 .findPosts()
-                    .enqueue(new Callback<PostSearchResults>() {
+                    .enqueue(new Callback<RssResponse>() {
                         @Override
-                        public void onResponse(Call<PostSearchResults> call, Response<PostSearchResults> response) {
-                            int k = 6;
-                            android.util.Log.d("HEY", "HEY");
+                        public void onResponse(Call<RssResponse> call, Response<RssResponse> response) {
+                            mPostsView.displayPosts(response.body().getPosts());
                         }
 
                         @Override
-                        public void onFailure(Call<PostSearchResults> call, Throwable t) {
-                            android.util.Log.d("HEY", "HEY");
-                        }
-                    });
-
-        // TODO: remove this code once functionality finished
-        /*
-        RetrofitUtility.getPostsApi()
-                .findPosts()
-                    .enqueue(new Callback<List<PostSearchResult>>() {
-                        @Override
-                        public void onResponse(Call<List<PostSearchResult>> call, Response<List<PostSearchResult>> response) {
-                            mPostsView.displayPosts(response.body());
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<PostSearchResult>> call, Throwable t) {
+                        public void onFailure(Call<RssResponse> call, Throwable t) {
                             mPostsView.displayError();
                         }
                     });
-        */
     }
 
     @Override
