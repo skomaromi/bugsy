@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bugsy</string>
+    <string name="error_default">An error occurred while loading posts.</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_height"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/iv_post_image"
+        android:layout_width="@dimen/item_image_wh"
+        android:layout_height="@dimen/item_image_wh"
+        android:src="@android:color/holo_orange_dark"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tv_post_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_spacingbig"
+        android:layout_marginEnd="@dimen/item_image_wh"
+        android:paddingEnd="@dimen/item_spacingbig"
+        android:layout_marginBottom="@dimen/item_spacingsmall"
+        android:layout_marginStart="@dimen/item_spacingbig"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="@dimen/item_textsize_title"
+        android:textStyle="bold"
+        android:text="This is a post title example example example example example example example" />
+
+    <TextView
+        android:id="@+id/tv_post_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/item_image_wh"
+        android:paddingEnd="@dimen/item_spacingbig"
+        android:layout_marginBottom="@dimen/item_spacing"
+        android:layout_marginStart="@dimen/item_spacingbig"
+        android:layout_below="@id/tv_post_title"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/item_textsize_other"
+        android:text="Really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long text." />
+
+    <TextView
+        android:id="@+id/tv_post_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_spacingsmall"
+        android:layout_marginBottom="@dimen/item_spacingbig"
+        android:layout_marginStart="@dimen/item_spacingbig"
+        android:layout_alignParentBottom="true"
+        android:textStyle="italic"
+        android:textSize="@dimen/item_textsize_other"
+        android:textColor="@color/material_grey_500"
+        android:text="20 Apr 2018" />
+
+</RelativeLayout>
