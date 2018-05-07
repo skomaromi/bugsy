@@ -13,5 +13,6 @@ public interface PostsContract {
     interface PostsView {
         void displayPosts(List<PostSearchResult> posts);
         void displayError();
+        void hideSwipeProgress();
     }
 }

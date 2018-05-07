@@ -1,5 +1,6 @@
 package com.github.skomaromi.bugsy.view;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -15,22 +16,35 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PostsActivity extends AppCompatActivity implements PostsContract.PostsView {
+public class PostsActivity extends AppCompatActivity implements PostsContract.PostsView, SwipeRefreshLayout.OnRefreshListener {
 
     private PostsContract.PostsPresenter mPostsPresenter;
     private PostSearchResultAdapter mAdapter;
+
+    private SwipeRefreshLayout mRefreshLayout;
     @BindView(R.id.rv_posts) RecyclerView rvPosts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posts);
+        mRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.srl_activitycontainer);
+        mRefreshLayout.setOnRefreshListener(this);
 
         ButterKnife.bind(this);
 
         mPostsPresenter = new PostsPresenter(this);
         setUpRecyclerView();
         mPostsPresenter.fetchPosts();
+    }
+
+    @Override
+    public void onRefresh() {
+        mPostsPresenter.fetchPosts();
+    }
+
+    public void hideSwipeProgress() {
+        mRefreshLayout.setRefreshing(false);
     }
 
     private void setUpRecyclerView() {
