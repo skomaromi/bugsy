@@ -7,11 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.skomaromi.bugsy.R;
 import com.github.skomaromi.bugsy.model.PostSearchResult;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,12 @@ class PostSearchResultAdapter extends RecyclerView.Adapter<PostSearchResultAdapt
         holder.tv_post_title.setText(result.getTitle());
         holder.tv_post_description.setText(result.getDescription());
         holder.tv_post_date.setText(result.getDate());
+
+        Picasso.get()
+                .load(result.getImageUrl())
+                .centerCrop()
+                .fit()
+                .into(holder.iv_post_image);
     }
 
     @Override
@@ -56,6 +63,7 @@ class PostSearchResultAdapter extends RecyclerView.Adapter<PostSearchResultAdapt
         @BindView(R.id.tv_post_title) TextView tv_post_title;
         @BindView(R.id.tv_post_description) TextView tv_post_description;
         @BindView(R.id.tv_post_date) TextView tv_post_date;
+        @BindView(R.id.iv_post_image) ImageView iv_post_image;
 
         public PostSearchResultViewHolder(View itemView) {
             super(itemView);

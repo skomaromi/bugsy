@@ -1,5 +1,6 @@
 package com.github.skomaromi.bugsy.model;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -11,6 +12,8 @@ public class PostSearchResult {
     @Element(name = "link") private String mLink;
     @Element(name = "pubDate") private String mDate;
     @Element(name = "category") private String mCategory;
+    @Element(name = "enclosure")
+    private RssImage mImage;
 
     public PostSearchResult() {}
 
@@ -52,5 +55,17 @@ public class PostSearchResult {
 
     public void setCategory(String category) {
         this.mCategory = category;
+    }
+
+    @Root()
+    public static class RssImage{
+        @Attribute(name = "url")
+        private String url;
+
+        RssImage() {}
+    }
+
+    public String getImageUrl() {
+        return mImage.url;
     }
 }
