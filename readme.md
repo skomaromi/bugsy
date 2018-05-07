@@ -3,7 +3,7 @@
 
 ### The assignment and problems encountered
 
-The task of this assignment was to create an application which loads an RSS feed from (here)[https://www.bug.hr/rss]. It should show each post's image, title, description, date posted and allow loading complete articles by clicking on one of them.
+The task of this assignment was to create an application which loads an RSS feed from https://www.bug.hr/rss. It should show each post's image, title, description, date posted and allow loading complete articles by clicking on one of them.
 
 ### Utilised snippets/solutions/libraries/SO answers
 
